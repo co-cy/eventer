@@ -1,8 +1,10 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
+from database.event import Event
 
 blueprint = Blueprint("index", __name__)
 
 
-@blueprint.route("/")
+@blueprint.route("/", methods=["GET"])
 def index():
-    return "Главная страница"
+    events = Event.query.all()
+    return render_template("index.html", events=events)
