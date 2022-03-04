@@ -7,7 +7,7 @@
     <body>
         {% for event in events %}
             <p>
-                <img src="{{event.image}}" alt="Nothing">
+                <img src="/{{ event.image_path }}" alt="Nothing">
                 {{event.annotation}}
                 <a href="/event/{{event.id}}">
                     Подробнее
