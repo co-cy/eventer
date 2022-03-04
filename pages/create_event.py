@@ -20,6 +20,8 @@ def create_event_post():
     form = CreateEventForm()
     if form.validate_on_submit():
         image = form.image.data
+
+        # TODO: Правильно обработать сохранение файлов
         image_path = join(current_app.config["IMAGE_SAVE_DIR"], image.filename)
         image.save(image_path)
 
