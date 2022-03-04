@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% for event in events%}
-        <p>
-            <a>
-                {{event.image}}
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        {% for event in events %}
+            <p>
+                <img src="{{event.image}}" alt="Nothing">
                 {{event.annotation}}
-            </a>
-        </p>
-    {% endfor %}
-</body>
+                <a href="/event/{{event.id}}">
+                    Подробнее
+                </a>
+            </p>
+        {% endfor %}
+    </body>
 </html>
