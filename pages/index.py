@@ -6,6 +6,5 @@ blueprint = Blueprint("index", __name__)
 
 @blueprint.route("/", methods=["GET"])
 def index():
-    # TODO: Добавить отрисовку только существующих мероприятий
-    events = Event.query.all()
+    events = Event.query.filter_by(is_deleted=False).all()
     return render_template("index.html", events=events)
