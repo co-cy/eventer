@@ -8,7 +8,15 @@
         {% for event in events %}
             <p>
                 <img src="/{{ event.image_path }}" alt="Nothing">
-                {{event.annotation}}
+                <p>
+                {{ event.annotation }}
+                </p>
+                <p>
+                    {{ event.start_date }}
+                </p>
+                <p>
+                    {{ event.end_date }}
+                </p>
                 <a href="/event/{{event.id}}">
                     Подробнее
                 </a>

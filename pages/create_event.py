@@ -26,7 +26,8 @@ def create_event_post():
         img_path = join(current_app.config["IMAGE_SAVE_DIR"], filename)
         image.save(img_path)
 
-        new_event = event.Event(img_path, form.annotation.data, form.description.data)
+        new_event = event.Event(img_path, form.annotation.data, form.description.data,
+                                form.start_date.data, form.end_date.data)
 
         db.session.add(new_event)
         db.session.commit()
