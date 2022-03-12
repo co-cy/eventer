@@ -10,6 +10,8 @@ class Event(db.Model):
 
     description = db.Column(db.Text, nullable=False)
 
+    location = db.Column(db.String(128), nullable=False)
+
     reg_start_date = db.Column(db.DateTime, nullable=False)
     reg_end_date = db.Column(db.DateTime, nullable=False)
 
@@ -18,12 +20,14 @@ class Event(db.Model):
 
     is_deleted = db.Column(db.Boolean, nullable=False, default=False)
 
-    def __init__(self, image: str, annotation: str, description: str,
+    def __init__(self, image: str, annotation: str, description: str, location: str,
                  reg_start_date: datetime, reg_end_date: datetime,
                  start_date: datetime, end_date: datetime) -> None:
         self.image_path = image
         self.annotation = annotation
         self.description = description
+
+        self.location = location
 
         self.reg_start_date = reg_start_date
         self.reg_end_date = reg_end_date

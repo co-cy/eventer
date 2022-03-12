@@ -27,6 +27,7 @@ def create_event_post():
         image.save(img_path)
 
         new_event = event.Event(img_path, form.annotation.data, form.description.data,
+                                form.location.data,
                                 form.reg_start_date.data, form.reg_end_date.data,
                                 form.start_date.data, form.end_date.data)
 

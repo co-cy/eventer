@@ -8,7 +8,11 @@
         {% for event in events %}
             <img src="/{{ event.image_path }}" alt="Nothing">
             <p>
-            {{ event.annotation }}
+                {{ event.annotation }}
+            </p>
+            <p>
+                Где проводиться мероприятие:
+                {{ event.location }}
             </p>
             <p>
                 Начало регистрации:
