@@ -11,10 +11,23 @@
             {{ event.description }}
         </p>
         <p>
+            Начало регистрации:
+            {{ event.reg_start_date }}
+        </p>
+        <p>
+            Конец регистрации:
+            {{ event.reg_end_date }}
+        </p>
+        <p>
+            Начало мероприятия:
             {{ event.start_date }}
         </p>
         <p>
+            Конец мероприятия:
             {{ event.end_date }}
+        </p>
+        <p>
+            Длительность мероприятия: {{ event.end_date - event.start_date }}
         </p>
     </body>
 </html>

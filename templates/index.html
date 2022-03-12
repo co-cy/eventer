@@ -6,21 +6,29 @@
     </head>
     <body>
         {% for event in events %}
+            <img src="/{{ event.image_path }}" alt="Nothing">
             <p>
-                <img src="/{{ event.image_path }}" alt="Nothing">
-                <p>
-                {{ event.annotation }}
-                </p>
-                <p>
-                    {{ event.start_date }}
-                </p>
-                <p>
-                    {{ event.end_date }}
-                </p>
-                <a href="/event/{{event.id}}">
-                    Подробнее
-                </a>
+            {{ event.annotation }}
             </p>
+            <p>
+                Начало регистрации:
+                {{ event.reg_start_date }}
+            </p>
+            <p>
+                Конец регистрации:
+                {{ event.reg_end_date }}
+            </p>
+            <p>
+                Начало мероприятия:
+                {{ event.start_date }}
+            </p>
+            <p>
+                Конец мероприятия:
+                {{ event.end_date }}
+            </p>
+            <a href="/event/{{event.id}}">
+                Подробнее
+            </a>
         {% endfor %}
     </body>
 </html>
