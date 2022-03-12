@@ -13,7 +13,7 @@ class Event(db.Model):
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
 
-    is_deleted = db.Column(db.Boolean, nullable=False, default=True)
+    is_deleted = db.Column(db.Boolean, nullable=False, default=False)
 
     def __init__(self, image: str, annotation: str, description: str,
                  start_date: datetime, end_date: datetime) -> None:

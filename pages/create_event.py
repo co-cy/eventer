@@ -2,8 +2,11 @@ from flask import current_app, redirect, url_for
 from flask import Blueprint, render_template
 from forms.event import CreateEventForm
 from database import event, db
-from os.path import join, isfile
+from os.path import join
 from time import time
+from pytz import utc
+
+from flask_celery.event.delete_event import delete_event
 
 blueprint = Blueprint("create_event", __name__)
 
@@ -31,6 +34,8 @@ def create_event_post():
 
         db.session.add(new_event)
         db.session.commit()
+        print("DATE END: ", form.end_date.data)
+        delete_event.apply_async((new_event.id, ), eta=form.end_date.data)
 
         return redirect(url_for("index.index"))
     return render_template("create_event.html", form=form)

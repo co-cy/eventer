@@ -3,6 +3,7 @@ from flask import Flask
 from database import db
 from forms import csrf
 from flask_celery import celery
+from database import event
 
 app = Flask(__name__)
 app.config.from_pyfile('server_config.py')
@@ -18,5 +19,8 @@ init_pages(app)
 
 
 @celery.task
-def add(x, y):
-    return x + y
+def delete_event2(id_event: int):
+    cur_event: event.Event = event.Event.query.get(id_event)
+    cur_event.is_deleted = True
+
+    db.session.commit()
