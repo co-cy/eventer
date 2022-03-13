@@ -1,6 +1,12 @@
+# For main app
 DEBUG = True
-SQLALCHEMY_DATABASE_URI = "sqlite:///./database/database.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "12345"
+
+# For database
+SQLALCHEMY_DATABASE_URI = "sqlite:///./database/database.db"
+
+# For image saving system
 IMAGE_SAVE_DIR = "static/user_images"
 
 # For Celery
