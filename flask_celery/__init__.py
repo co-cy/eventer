@@ -1,11 +1,11 @@
+from config import CeleryConfig
 from celery import Celery
 from flask import Flask
 
 
 class MCelery(Celery):
     def init_app(self, app: Flask):
-        self.conf.update(broker_url=app.config.get("BROKER_URL", None),
-                         result_backend=app.config.get("CELERY_RESULT_BACKEND", None))
+        self.conf.update(**CeleryConfig())
         TaskBase = self.Task
 
         class ContextTask(TaskBase):
