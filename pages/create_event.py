@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template
 from forms.event import CreateEventForm
-from config import SaveConfig
 from flask import redirect, url_for
 from database import event, db
+from config import SaveConfig
+from datetime import datetime
 from os.path import join
-from time import time
 
 blueprint = Blueprint("create_event", __name__)
 
@@ -23,7 +23,7 @@ def create_event_post():
     if form.validate_on_submit():
         image = form.image.data
 
-        filename = f"{round(time() * 1e7)}.{image.filename.split('.')[-1]}"
+        filename = f"{round(datetime.utcnow().timestamp() * 1e7)}.{image.filename.split('.')[-1]}"
         img_path = join(SaveConfig.IMAGE_SAVE_DIR, filename)
         image.save(img_path)
 
