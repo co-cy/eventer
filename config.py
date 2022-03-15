@@ -1,7 +1,20 @@
 class Config(dict):
-    def __init__(self):
-        list_arg = {x: self.__class__.__dict__[x] for x in self.__class__.__dict__.keys() if not x.startswith("__")}
-        super().__init__(**list_arg)
+    """Basic configuration class"""
+
+    def __getallconfigs__(self) -> dict:
+        """Returns all user-defined configurations"""
+        return {x: self.__class__.__dict__[x] for x in self.__class__.__dict__.keys() if not x.startswith("__")}
+
+    def __init__(self, *args, **kwargs):
+        """Initializes the dictionary"""
+        if len(args) == 1 and isinstance(args[0], dict):
+            kwargs |= args[0]
+        else:
+            for key, item in enumerate(args):
+                if not kwargs.get(key, None):
+                    kwargs[key] = item
+        list_arg = self.__getallconfigs__() | kwargs
+        super().__init__(list_arg)
 
 
 # For main app
