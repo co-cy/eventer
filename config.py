@@ -45,3 +45,14 @@ class CeleryConfig(Config):
     result_backend = "db+sqlite:///./database/database.db"
     broker_url = 'pyamqp://guest:guest@79.120.76.23:5672/'
 
+
+# For loguru
+# More config
+# https://loguru.readthedocs.io/en/stable/overview.html
+class LoguruConfig(Config):
+    sink = "log/file.log"
+    rotation = "23:59"
+    retention = "32 days"
+    compression = "zip"
+    catch = True
+
