@@ -19,6 +19,7 @@ def get_registration():
 
 @blueprint.route("/registration", methods=["POST"])
 @blueprint.route("/reg", methods=["POST"])
+@logger.catch
 def post_registration():
     logger.info("Someone sent an application for registration")
     form = RegistrationUserForm()
