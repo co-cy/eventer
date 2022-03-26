@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, abort
 from forms.registration_user import RegistrationUserForm
 from flask_loguru import logger
 from config import SaveConfig
@@ -19,7 +19,7 @@ def get_registration():
 
 @blueprint.route("/registration", methods=["POST"])
 @blueprint.route("/reg", methods=["POST"])
-@logger.catch
+@logger.catch(onerror=lambda _: abort(500))
 def post_registration():
     logger.info("Someone sent an application for registration")
     form = RegistrationUserForm()
