@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <img src="/{{ user.image }}">
+        <p>
+            ФИО:
+            {{ user.first_name }} {{ user.last_name }}
+        </p>
+        <p>
+            Ник:
+            {{ user.nickname }}
+        </p>
+        <p>
+            Описание:
+            {{ user.description }}
+        </p>
+        <p>
+            Почта:
+            {{ user.email }}
+        </p>
+        <p>
+            Пароль:
+            {{ user.password }}
+        </p>
+        <p>
+            Все события:
+        </p>
+        <ul>
+            {% for event in user.events %}
+                <li>
+                    id event: {{ event.id }}
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
