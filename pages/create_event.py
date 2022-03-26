@@ -26,6 +26,7 @@ def create_event_post():
     logger.info("Someone tried to create an event")
     form = CreateEventForm()
     if form.validate_on_submit():
+        # TODO костыльный метод сохранения изображения мероприятия
         image = form.image.data
 
         filename = f"{round(datetime.utcnow().timestamp() * 1e7)}.{image.filename.split('.')[-1]}"
