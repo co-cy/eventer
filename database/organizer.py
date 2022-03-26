@@ -23,3 +23,17 @@ class Organizer(db.Model):
     password = db.Column(db.String(128))
 
     events = db.relationship("Event", secondary=organizer_event, backref="organizers")
+
+    def __init__(self, image: str, name: str, description: str, phone: int, email: str,
+                 password: str):
+        self.image = image
+
+        self.name = name
+
+        self.description = description
+
+        self.phone = phone
+        self.email = email
+
+        self.password = password
+

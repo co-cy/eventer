@@ -24,3 +24,16 @@ class User(db.Model):
     password = db.Column(db.String(128))
 
     events = db.relationship("Event", secondary=user_event, backref="users")
+
+    def __init__(self, image: str, first_name: str, last_name: str, nickname: str,
+                 description: str, email: str, password: str):
+        self.image = image
+
+        self.first_name = first_name
+        self.last_name = last_name
+        self.nickname = nickname
+
+        self.description = description
+        self.email = email
+
+        self.password = password
