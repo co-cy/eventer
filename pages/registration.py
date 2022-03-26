@@ -11,6 +11,7 @@ blueprint = Blueprint("registration", __name__)
 
 @blueprint.route("/registration", methods=["GET"])
 @blueprint.route("/reg", methods=["GET"])
+@logger.catch(onerror=lambda _: abort(500))
 def get_registration():
     logger.info("Someone went to the user registration page")
     form = RegistrationUserForm()

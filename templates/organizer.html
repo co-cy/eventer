@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <img src="/{{ organizer.image }}">
+        <p>
+            Название компании:
+            {{ organizer.name }}
+        </p>
+        <p>
+            Описание:
+            {{ organizer.description }}
+        </p>
+        <p>
+            Телефон: {{ organizer.phone }}
+        </p>
+        <p>
+            Почта: {{ organizer.email }}
+        </p>
+        <p>
+            Пароль:
+            {{ organizer.password }}
+        </p>
+        <p>
+            Все события:
+        </p>
+        <ul>
+            {% for event in organizer.events %}
+                <li>
+                    id event: {{ event.id }}
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
