@@ -10,6 +10,7 @@ blueprint = Blueprint("organizer", __name__)
 @logger.catch(onerror=lambda _: abort(500))
 def get_organizer(id_org: int):
     org = organizer.Organizer.query.get(id_org)
+    logger.info("Someone went to the organization's page id - {} ({})", id_org, org is None)
     if org:
         return render_template('organizer.html', organizer=org)
     return abort(404)
