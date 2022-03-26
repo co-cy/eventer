@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm, file
 
 
 class RegistrationOrganizerForm(FlaskForm):
+    # TODO Добавить обработку ошибок
     image = file.FileField("Выберите свою картинку", validators=[file.FileRequired(), file.FileAllowed(["jpg", "png"])])
 
     name = StringField("Введите имя компании:", validators=[DataRequired()])
